@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/> <!-- Optional CSS -->
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+
+        <!-- Display error messages -->
+        <div th:if="${errorMessage}" class="error">
+            <p th:text="${errorMessage}"></p>
+        </div>
+        <div th:if="${logoutMessage}" class="success">
+            <p th:text="${logoutMessage}"></p>
+        </div>
+
+        <!-- Login Form -->
+        <form th:action="@{/loginJwt}" method="post">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required/>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required/>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+
+        <p>Not registered? <a href="/register">Create an account</a></p>
+    </div>
+</body>
+</html>
